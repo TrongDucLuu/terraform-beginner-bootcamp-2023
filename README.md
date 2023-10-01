@@ -186,7 +186,12 @@ At the start of a new terraform project we will run `terraform init` to download
 This will generate out a changeset, about the state of our infrastructure and what will be changed.
 
 We can output this changeset ie. "plan" to be passed to an apply, but often you can just ignore outputting.
+#### Terraform Destroy
 
+`terraform destroy`
+This will destroy resources.
+
+We can also use the auto approve flag to skip the approve prompt eg. `terraform apply --auto-approve`
 #### Terraform Apply
 
 `terraform apply`
