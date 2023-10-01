@@ -9,3 +9,5 @@ if ! grep -qF "$alias_line" ~/.bash_profile; then
 else
   echo "Alias 'tf' for 'terraform' already exists in .bash_profile"
 fi
+# Optional: source the .bash_profile to make the alias available immediately
+source ~/.bash_profile
