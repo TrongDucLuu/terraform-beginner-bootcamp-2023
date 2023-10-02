@@ -37,6 +37,8 @@ We can use the `-var` flag to set an input variable or override a variable in th
 ### var-file flag
 
 - TODO: document this flag
+--->
+The -var-file flag in Terraform is used to specify a file that contains variable values for a Terraform configuration. This flag allows you to provide values for variables without directly modifying the Terraform configuration files, which can be useful for keeping sensitive or environment-specific data separate from the main configuration.  
 
 ### terraform.tvfars
 
@@ -45,7 +47,28 @@ This is the default file to load in terraform variables in blunk
 ### auto.tfvars
 
 - TODO: document this functionality for terraform cloud
+--->
+The auto.tfvars file in Terraform serves as a mechanism to automatically load variable values into a Terraform configuration. When Terraform executes, it looks for and automatically loads the variable values from this file unless overridden by another source.
+
+Here's how it functions:
+
+Automatic Variable Assignment: If Terraform detects a file named auto.tfvars in the working directory, it will automatically load the variable values from this file.
+
+Variable Definitions: The auto.tfvars file typically contains variable definitions in the form of variable-value pairs, using the same syntax as Terraform variable definitions in a .tf file.
+
+For example:
+```
+hcl
+
+region = "us-west-2"
+instance_type = "t2.micro"
+```
+Variable Overrides: These variable values can be overridden by providing them through other means like command-line flags, environment variables, or through variable files specified using the -var-file option.
+
+Using auto.tfvars helps in automatically providing default or commonly used values for variables, making it easier to manage and maintain configurations. However, it's essential to be cautious and ensure that sensitive information like credentials is not stored in this file or any version control system. It's common practice to add auto.tfvars to the .gitignore file to prevent accidental exposure of sensitive data.
 
 ### order of terraform variables
 
 - TODO: document which terraform variables takes presendence.
+--->
+The priority of variable values is such that values specified at higher levels (e.g., CLI flags) will override values specified at lower levels (e.g., default values in the configuration). This allows for flexibility in setting variables based on different contexts without modifying the main configuration.
